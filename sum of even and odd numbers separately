@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void sumEvenOdd(int *arr, int size, int *sum_even, int *sum_odd) {
+    *evenkosum = 0;
+    *oddkosum = 0;
+    
+    for (int i = 0; i < size; i++) {
+        if (arr[i] % 2 == 0) {
+            *evenkosum += arr[i]; // Add even numbers to sum_even
+        } else {
+            *oddkosum += arr[i];  // Add odd numbers to sum_odd
+        }
+    }
+}
+
+int main() {
+    int size;
+    int *arr, evenkosum = 0, oddkosum = 0;
+
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    arr = (int *)malloc(size * sizeof(int));
+    if (arr == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    printf("Enter elements of the array:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    sumEvenOdd(arr, size, &evenkosum, &oddkosum); // Call the function to compute sum of even and odd numbers
+
+    printf("Sum of even numbers: %d\n", evenkosum);
+    printf("Sum of odd numbers: %d\n", oddkosum);
+
+    free(arr); // Free dynamically allocated memory
+    return 0;
+}
